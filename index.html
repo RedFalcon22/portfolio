@@ -434,7 +434,7 @@
                 <header class="page-header">
                     <h2>Portfolio</h2>
                 </header>
-                
+
                 <div class="filter-tabs">
                     <button class="filter-tab active" data-filter="all">All</button>
                     <button class="filter-tab" data-filter="mobile">Mobile</button>
@@ -443,15 +443,24 @@
                 </div>
 
                 <div class="portfolio-grid">
+
                     <div class="portfolio-item" data-category="mobile" data-project="kizunai">
                         <div class="portfolio-image">
-                            <img src="pictures/kizunai/kizunaiprofile.png" alt="Kizunai Project">
-                            <div class="portfolio-overlay">
+                            <img src="pictures/kizunai/kizunaiprofile.png" alt="Kizunai">
+                            <span class="portfolio-badge">Mobile</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-meta">
                                 <h4>Kizunai</h4>
-                                <p>Flutter & Django</p>
-                                <div class="portfolio-links">
-                                    <span class="portfolio-link">View Gallery</span>
-                                </div>
+                                <span class="portfolio-year">2024</span>
+                            </div>
+                            <p class="portfolio-short-desc">Cross-platform social app connecting researchers & students via real-time BLE monitoring and AI-powered lesson tools.</p>
+                            <div class="portfolio-tech-pills">
+                                <span>Flutter</span><span>Django</span><span>BLE</span><span>AI/ML</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-gallery" data-project="kizunai">Gallery</button>
+                                <button class="btn-details" data-project="kizunai">Details →</button>
                             </div>
                         </div>
                     </div>
@@ -459,41 +468,66 @@
                     <div class="portfolio-item" data-category="ai" data-project="intelligentia">
                         <div class="portfolio-image">
                             <img src="pictures/ai/ai.jpeg" alt="AI Project">
-                            <div class="portfolio-overlay">
-                                <h4>Video Indexing & Segmentation</h4>
-                                <p>Machine Learning</p>
-                                <div class="portfolio-links">
-                                    <span class="portfolio-link">View Gallery</span>
-                                </div>
+                            <span class="portfolio-badge">AI/ML</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-meta">
+                                <h4>Intelligentia Pro</h4>
+                                <span class="portfolio-year">2024</span>
+                            </div>
+                            <p class="portfolio-short-desc">Multimedia video indexing system using YOLO for real-time object detection and speech recognition for auto-captioning.</p>
+                            <div class="portfolio-tech-pills">
+                                <span>Python</span><span>YOLO</span><span>TensorFlow</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-gallery" data-project="intelligentia">Gallery</button>
+                                <button class="btn-details" data-project="intelligentia">Details →</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="portfolio-item" data-category="web" data-project="webcraft">
                         <div class="portfolio-image">
-                            <img src="pictures/picsangular/ang0.png" alt="Web Project">
-                            <div class="portfolio-overlay">
+                            <img src="pictures/picsangular/ang0.png" alt="WebCraft Studio">
+                            <span class="portfolio-badge">Web</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-meta">
                                 <h4>WebCraft Studio</h4>
-                                <p>Angular & Django</p>
-                                <div class="portfolio-links">
-                                    <span class="portfolio-link">View Gallery</span>
-                                </div>
+                                <span class="portfolio-year">2024</span>
+                            </div>
+                            <p class="portfolio-short-desc">Creative portfolio platform with stunning visual effects built with Angular & Django for optimal performance.</p>
+                            <div class="portfolio-tech-pills">
+                                <span>Angular</span><span>Django</span><span>MySQL</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-gallery" data-project="webcraft">Gallery</button>
+                                <button class="btn-details" data-project="webcraft">Details →</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="portfolio-item" data-category="web" data-project="enterprise">
                         <div class="portfolio-image">
-                            <img src="pictures/jee/jee.png" alt="Enterprise Project">
-                            <div class="portfolio-overlay">
-                                <h4>Secure Backend</h4>
-                                <p>Java EE</p>
-                                <div class="portfolio-links">
-                                    <span class="portfolio-link">View Gallery</span>
-                                </div>
+                            <img src="pictures/jee/jee.png" alt="Enterprise Manager">
+                            <span class="portfolio-badge">Web</span>
+                        </div>
+                        <div class="portfolio-body">
+                            <div class="portfolio-meta">
+                                <h4>Enterprise Manager</h4>
+                                <span class="portfolio-year">2024</span>
+                            </div>
+                            <p class="portfolio-short-desc">University management system with academic structure, quizzes, forums and secure messaging for students & staff.</p>
+                            <div class="portfolio-tech-pills">
+                                <span>Java EE</span><span>Angular</span><span>Oracle DB</span>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="btn-gallery" data-project="enterprise">Gallery</button>
+                                <button class="btn-details" data-project="enterprise">Details →</button>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
@@ -741,6 +775,53 @@
                     </div>
                     <div class="gallery-thumbnails" id="galleryThumbnails"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="details-modal" id="detailsModal">
+        <div class="details-panel">
+            <button class="details-close" id="detailsClose">✕</button>
+
+            <div class="details-hero">
+                <img class="details-hero-img" id="detailsHeroImg" src="" alt="">
+                <div class="details-hero-overlay">
+                    <span class="details-badge" id="detailsBadge"></span>
+                    <h2 class="details-title" id="detailsTitle"></h2>
+                    <p class="details-subtitle" id="detailsSubtitle"></p>
+                    <span class="details-year-badge" id="detailsYear"></span>
+                </div>
+            </div>
+
+            <div class="details-body">
+
+                <div class="details-section">
+                    <h3 class="details-section-title">About the Project</h3>
+                    <p class="details-description" id="detailsDescription"></p>
+                </div>
+
+                <div class="details-cols">
+                    <div class="details-section">
+                        <h3 class="details-section-title">Key Features</h3>
+                        <ul class="details-features" id="detailsFeatures"></ul>
+                    </div>
+                    <div class="details-section">
+                        <h3 class="details-section-title">Tech Stack</h3>
+                        <div class="details-tech" id="detailsTech"></div>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h3 class="details-section-title">Development Roadmap</h3>
+                    <div class="details-roadmap" id="detailsRoadmap"></div>
+                </div>
+
+                <div class="details-section">
+                    <h3 class="details-section-title">Screenshots</h3>
+                    <div class="details-thumbs" id="detailsThumbs"></div>
+                </div>
+
             </div>
         </div>
     </div>

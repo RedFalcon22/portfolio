@@ -1,42 +1,114 @@
 // Project Data
 const projectData = {
     kizunai: {
-        title: "Kizunai - Social Connection App",
-        description: "A comprehensive app for researchers and students built with Flutter and Django, featuring real-time data monitoring, user profiles, student anonymous tracking, and AI-powered explanation for lessons. The app focuses on creating meaningful connections through shared interests and activities.",
-        technologies: ["Flutter", "Django", "MySql", "BLE", "WebSocket", "AI/ML"],
+        title: "Kizunai",
+        subtitle: "Social Connection App",
+        category: "Mobile",
+        year: "2024",
+        status: "completed",
+        description: "A comprehensive cross-platform app for researchers and students built with Flutter and Django. It features real-time BLE sensor data monitoring, anonymous student tracking, AI-powered lesson explanations, and WebSocket live data streaming. The app focuses on creating meaningful academic connections through shared interests and smart data insights.",
+        technologies: ["Flutter", "Django", "MySQL", "BLE", "WebSocket", "AI/ML"],
         images: [
             "pictures/kizunai/kizunai0.png",
             "pictures/kizunai/kizunai1.png",
             "pictures/kizunai/kizunai2.png",
             "pictures/kizunai/kizunai3.png",
             "pictures/kizunai/kizunai4.png",
-        ] 
+        ],
+        features: [
+            "Real-time BLE sensor data monitoring",
+            "AI-powered lesson explanations",
+            "Anonymous student tracking system",
+            "WebSocket live data streaming",
+            "User profiles & social connections",
+            "Cross-platform iOS & Android support"
+        ],
+        roadmap: [
+            { phase: "Research & Design", status: "done", desc: "Requirements gathering, UI/UX wireframing in Figma, database schema planning and architecture decisions." },
+            { phase: "Core Development", status: "done", desc: "Flutter frontend with BLoC state management, Django REST API, MySQL database with ORM models." },
+            { phase: "BLE & AI Integration", status: "done", desc: "Bluetooth Low Energy sensor integration, AI model for contextual lesson explanations, WebSocket real-time layer." },
+            { phase: "Testing & Launch", status: "done", desc: "Unit & widget testing, device compatibility across Android/iOS, performance optimization and production deployment." }
+        ]
     },
     intelligentia: {
-        title: "Intelligentia Pro - AI Analytics Platform",
-        description: "A multimedia video indexing system powered by YOLO for real-time object and person detection. The project processes videos to automatically identify and categorize visual content, and integrates speech recognition to generate synchronized captions—making videos searchable, accessible, and easier to analyze.",
-        technologies: ["Python", "TensorFlow","AI/ML"],
+        title: "Intelligentia Pro",
+        subtitle: "AI Video Analytics Platform",
+        category: "AI/ML",
+        year: "2024",
+        status: "completed",
+        description: "A multimedia video indexing and segmentation system powered by YOLO for real-time object and person detection. The project automatically identifies and categorizes visual content in video streams, and integrates a speech recognition pipeline to generate synchronized captions — making any video searchable, accessible, and fully analyzable.",
+        technologies: ["Python", "YOLO", "TensorFlow", "OpenCV", "Whisper", "FFmpeg"],
         images: [
             "pictures/ai/ai.jpeg",
+        ],
+        features: [
+            "Real-time YOLO object & person detection",
+            "Automatic video segmentation by content",
+            "Speech-to-text caption generation (Whisper)",
+            "Searchable video index with timestamps",
+            "Visual content categorization & tagging",
+            "Frame-level analysis pipeline"
+        ],
+        roadmap: [
+            { phase: "Dataset & Research", status: "done", desc: "Literature review on video segmentation techniques, dataset curation, YOLO model selection and baseline benchmarking." },
+            { phase: "Detection Pipeline", status: "done", desc: "YOLO integration with OpenCV video streams, bounding box tracking, frame sampling and scene cut detection." },
+            { phase: "Speech & Indexing", status: "done", desc: "Whisper ASR integration, caption synchronization with video timeline, searchable index construction." },
+            { phase: "Evaluation & Demo", status: "done", desc: "Accuracy evaluation on test videos, inference speed optimization, interactive demo interface." }
         ]
     },
     webcraft: {
-        title: "WebCraft Studio - Creative Portfolio Platform",
-        description: "A modern portfolio creation platform that allows creatives to showcase their work with stunning visual effects and animations. Built with React and Node.js for optimal performance.",
-        technologies: ["React", "Node.js", "Express", "MySQL", "Three.js", "GSAP"],
+        title: "WebCraft Studio",
+        subtitle: "Creative Portfolio Platform",
+        category: "Web",
+        year: "2024",
+        status: "completed",
+        description: "A modern portfolio creation platform that empowers creatives to showcase their work with stunning visual effects and animations. Built with Angular for a reactive SPA frontend and Django REST Framework on the backend, it features dynamic project galleries, customizable themes, and smooth GSAP-driven transitions.",
+        technologies: ["Angular", "Django", "MySQL", "Three.js", "GSAP", "REST API"],
         images: [
             "pictures/picsangular/ang0.png",
             "pictures/picsangular/ang1.png",
             "pictures/picsangular/ang2.png",
             "pictures/picsangular/ang3.png",
+        ],
+        features: [
+            "Dynamic project gallery with filtering",
+            "GSAP-powered page transitions & animations",
+            "Customizable themes and color palettes",
+            "Django REST API with JWT authentication",
+            "Three.js 3D background effects",
+            "Fully responsive across all devices"
+        ],
+        roadmap: [
+            { phase: "Design System", status: "done", desc: "Component library design, color system, typography scale, responsive grid system and animation guidelines." },
+            { phase: "Frontend Build", status: "done", desc: "Angular SPA with lazy-loaded routes, reactive forms, Three.js scene, GSAP scroll animations." },
+            { phase: "Backend & Auth", status: "done", desc: "Django REST API, JWT authentication, user portfolio CRUD, image upload handling with cloud storage." },
+            { phase: "Polish & Deploy", status: "done", desc: "Performance audit, Lighthouse optimization, CI/CD pipeline setup, production deployment." }
         ]
     },
     enterprise: {
-        title: "Enterprise Manager - Business Solution",
-        description: "A university management system using Java EE for the backend and Angular for the frontend. The platform includes features for user and academic structure management, subject content and quizzes, and communication tools such as forums and messaging between students, teachers, and administration. It emphasizes scalability, security, and clean architecture while providing an intuitive interface for both students and staff.",
+        title: "Enterprise Manager",
+        subtitle: "University Management System",
+        category: "Web",
+        year: "2024",
+        status: "completed",
+        description: "A full-scale university management platform using Java EE on the backend and Angular on the frontend. The system handles user & academic structure management, subject content delivery, quizzes, and communication tools including forums and direct messaging between students, teachers and administration — built with clean architecture and role-based access control.",
         technologies: ["Java EE", "Spring Boot", "Oracle DB", "Angular", "JPA", "JUnit"],
         images: [
             "pictures/jee/jee.png"
+        ],
+        features: [
+            "Role-based access control (student, teacher, admin)",
+            "Academic structure & course management",
+            "Interactive quizzes with auto-grading",
+            "Student-teacher discussion forums",
+            "Direct messaging & notifications",
+            "JUnit test suite with full coverage"
+        ],
+        roadmap: [
+            { phase: "Architecture", status: "done", desc: "Domain-driven design, entity-relationship modeling on Oracle DB, layered Java EE architecture with JPA & EJB." },
+            { phase: "Core Modules", status: "done", desc: "User management with RBAC, academic structure (faculties, departments, courses), content delivery system." },
+            { phase: "Communication Layer", status: "done", desc: "Forum system with threading, real-time notifications, direct messaging and email integration." },
+            { phase: "Testing & Security", status: "done", desc: "JUnit unit & integration tests, SQL injection prevention, XSS protection, security audit and deployment." }
         ]
     }
 };
@@ -150,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePhotoGallery();
     initializeParticles();
     initializeTypingAnimation();
+    initializeProjectDetails();
 });
 
 // Navigation Functionality
@@ -208,26 +281,24 @@ function initializePortfolioFilter() {
 
 // Gallery Functionality
 function initializeGallery() {
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
     const modal = document.getElementById('galleryModal');
     const closeBtn = document.getElementById('galleryClose');
     const prevBtn = document.getElementById('galleryPrev');
     const nextBtn = document.getElementById('galleryNext');
 
-    // Open gallery when clicking on portfolio items
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-project');
+    // Wire up gallery buttons (btn-gallery class)
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-gallery');
+        if (btn) {
+            const projectId = btn.getAttribute('data-project');
             openGallery(projectId);
-        });
+        }
     });
 
     // Close gallery
     closeBtn.addEventListener('click', closeGallery);
     modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeGallery();
-        }
+        if (e.target === modal) closeGallery();
     });
 
     // Navigation
@@ -241,7 +312,111 @@ function initializeGallery() {
             if (e.key === 'ArrowRight') navigateGallery(1);
             if (e.key === 'Escape') closeGallery();
         }
+        if (document.getElementById('detailsModal').classList.contains('active')) {
+            if (e.key === 'Escape') closeProjectDetails();
+        }
     });
+}
+
+// ============================================================
+// PROJECT DETAILS MODAL
+// ============================================================
+function initializeProjectDetails() {
+    const modal = document.getElementById('detailsModal');
+    const closeBtn = document.getElementById('detailsClose');
+
+    // Wire up details buttons
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-details');
+        if (btn) {
+            const projectId = btn.getAttribute('data-project');
+            openProjectDetails(projectId);
+        }
+    });
+
+    closeBtn.addEventListener('click', closeProjectDetails);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeProjectDetails();
+    });
+}
+
+function openProjectDetails(projectId) {
+    const project = projectData[projectId];
+    if (!project) return;
+
+    const modal = document.getElementById('detailsModal');
+
+    // Hero
+    document.getElementById('detailsHeroImg').src = project.images[0];
+    document.getElementById('detailsBadge').textContent = project.category;
+    document.getElementById('detailsTitle').textContent = project.title;
+    document.getElementById('detailsSubtitle').textContent = project.subtitle;
+    document.getElementById('detailsYear').textContent = project.year;
+
+    // Description
+    document.getElementById('detailsDescription').textContent = project.description;
+
+    // Features
+    document.getElementById('detailsFeatures').innerHTML = project.features
+        .map(f => `<li><span class="feature-check">✦</span>${f}</li>`)
+        .join('');
+
+    // Tech stack
+    document.getElementById('detailsTech').innerHTML = project.technologies
+        .map(t => `<span class="details-tech-tag">${t}</span>`)
+        .join('');
+
+    // Roadmap
+    document.getElementById('detailsRoadmap').innerHTML = project.roadmap
+        .map((step, i) => `
+            <div class="roadmap-step ${step.status}">
+                <div class="roadmap-connector"></div>
+                <div class="roadmap-dot">
+                    <span>${step.status === 'done' ? '✓' : step.status === 'in-progress' ? '◉' : '○'}</span>
+                </div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase ${i + 1}</div>
+                    <h4 class="roadmap-title">${step.phase}</h4>
+                    <p class="roadmap-desc">${step.desc}</p>
+                </div>
+            </div>
+        `).join('');
+
+    // Thumbnails
+    document.getElementById('detailsThumbs').innerHTML = project.images
+        .map((src, i) => `
+            <div class="details-thumb-item" data-index="${i}" data-project="${projectId}">
+                <img src="${src}" alt="Screenshot ${i + 1}">
+            </div>
+        `).join('');
+
+    // Thumbnail click → open gallery at that index
+    document.querySelectorAll('.details-thumb-item').forEach(item => {
+        item.addEventListener('click', function() {
+            closeProjectDetails();
+            const pid = this.getAttribute('data-project');
+            const idx = parseInt(this.getAttribute('data-index'));
+            currentProject = pid;
+            currentImageIndex = idx;
+            const project = projectData[pid];
+            const modal = document.getElementById('galleryModal');
+            document.getElementById('galleryTitle').textContent = project.title;
+            document.getElementById('galleryInfo').innerHTML = `<h3>${project.title}</h3><p>${project.description}</p>`;
+            document.getElementById('techTags').innerHTML = project.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('');
+            createThumbnails(project.images);
+            updateMainImage();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectDetails() {
+    document.getElementById('detailsModal').classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 // Achievement Gallery
