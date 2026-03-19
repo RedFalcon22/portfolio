@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find C:UsersASUSDesktopportfolio -not -path */.git/* -type d)"
+    ]
+  }
+}

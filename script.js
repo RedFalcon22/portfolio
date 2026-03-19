@@ -148,6 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAchievementGallery();
     initializePhotographyFilter();
     initializePhotoGallery();
+    initializeParticles();
+    initializeTypingAnimation();
 });
 
 // Navigation Functionality
@@ -467,16 +469,18 @@ function initializeAnimations() {
 // Initialize Skill Bars Animation
 function initializeSkillBars() {
     const skillBars = document.querySelectorAll('.skill-fill');
-    
+
+    // Store target widths from HTML, then reset to 0
+    skillBars.forEach(bar => {
+        bar.dataset.targetWidth = bar.style.width || '0%';
+        bar.style.width = '0%';
+    });
+
     const animateSkills = () => {
         skillBars.forEach((bar, index) => {
             setTimeout(() => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            }, index * 200);
+                bar.style.width = bar.dataset.targetWidth;
+            }, index * 150);
         });
     };
 
@@ -484,13 +488,15 @@ function initializeSkillBars() {
     const resumeLink = document.querySelector('[data-page="resume"]');
     if (resumeLink) {
         resumeLink.addEventListener('click', () => {
-            setTimeout(animateSkills, 500);
+            // Reset then animate
+            skillBars.forEach(bar => { bar.style.width = '0%'; });
+            setTimeout(animateSkills, 400);
         });
     }
 
     // Trigger on page load if resume is active
     if (document.getElementById('resume')?.classList.contains('active')) {
-        setTimeout(animateSkills, 500);
+        setTimeout(animateSkills, 600);
     }
 }
 
@@ -521,7 +527,7 @@ function initializeContactForm() {
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.disabled = false;
-                    button.style.background = '#00d4ff';
+                    button.style.background = '';
                 }, 3000);
             }, 2000);
         });
@@ -668,7 +674,6 @@ function updatePhotoTags(currentFilter, imageIndex) {
     }
 }
 
-// Mobile Menu Functionality - IMPROVED
 // Mobile Menu Functionality - IMPROVED
 function initializeMobileMenu() {
     const navbar = document.querySelector('.navbar');
@@ -849,3 +854,146 @@ function initializeMobileMenu() {
     window.addEventListener('resize', checkScreenSize);
     checkScreenSize();
 }
+
+// ============================================================
+// PARTICLE SYSTEM
+// ============================================================
+function initializeParticles() {
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    let animationId;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    function createParticle() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            radius: Math.random() * 1.5 + 0.4,
+            opacity: Math.random() * 0.45 + 0.1,
+            color: Math.random() > 0.5 ? '0, 212, 255' : '94, 88, 251'
+        };
+    }
+
+    function init() {
+        resize();
+        particles = [];
+        const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 14000));
+        for (let i = 0; i < count; i++) {
+            particles.push(createParticle());
+        }
+    }
+
+    function drawConnections() {
+        const maxDist = 140;
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < maxDist) {
+                    const alpha = (1 - dist / maxDist) * 0.12;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawConnections();
+
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
+            ctx.fill();
+        });
+
+        animationId = requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationId);
+        init();
+        animate();
+    });
+}
+
+// ============================================================
+// TYPING ANIMATION
+// ============================================================
+function initializeTypingAnimation() {
+    const el = document.getElementById('typing-text');
+    if (!el) return;
+
+    const phrases = [
+        'Full Stack Developer',
+        'Flutter & Django',
+        'AI/ML Engineer',
+        'Open to Work'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let pauseTime = 0;
+
+    function type() {
+        const current = phrases[phraseIndex];
+
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            el.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let speed = isDeleting ? 55 : 90;
+
+        if (!isDeleting && charIndex === current.length) {
+            speed = 2000; // pause at end
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            speed = 400;
+        }
+
+        setTimeout(type, speed);
+    }
+
+    setTimeout(type, 800);
+}
+
+// ============================================================
+// FIX: Contact form button reset uses gradient instead of flat color
+// ============================================================
+(function patchContactForm() {
+    // Override the inline style reset to use gradient
+    const origInit = window.initializeContactForm;
+})();
