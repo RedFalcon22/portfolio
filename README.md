@@ -21,7 +21,7 @@ Beyond coding, I’m also a **basketball player (14 years experience)**, **piani
 - **About** — Who I am & what I do  
 - **Resume** — Education, internships & skills  
 - **Sports & Achievements** — Basketball career, resilience journey & music  
-- **Portfolio** — Selected projects (Kizunai, Intelligentia, WebCraft Studio, Secure Backend)  
+- **Portfolio** — Selected projects (CyberShield AI, Kizunai, Intelligentia, Circuit & Cloth Commerce, WebCraft Studio, Secure Backend)  
 - **Photography** — My creative work behind the lens  
 - **Travel & Languages** — Countries I’ve visited & languages I speak  
 - **Contact** — Let’s connect!  
@@ -31,14 +31,15 @@ Beyond coding, I’m also a **basketball player (14 years experience)**, **piani
 ## 🚀 Featured Projects
 - **Kizunai** — Flutter & Django social app  
 - **Video Indexing & Segmentation** — Machine Learning-based multimedia project  
+- **Circuit & Cloth Commerce** — React, Node.js, TypeScript, Tailwind CSS e-commerce platform  
 - **WebCraft Studio** — Angular & Django full-stack web solution  
 - **Secure Backend** — Enterprise-ready backend with Java EE  
 
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: HTML, CSS, JavaScript, Angular  
-- **Backend**: Django, Java EE  
+- **Frontend**: HTML, CSS, JavaScript, React, Angular, Tailwind CSS  
+- **Backend**: Node.js, Express, Django, Java EE  
 - **Mobile**: Flutter  
 - **AI/ML**: Python, TensorFlow, YOLO  
 - **Other**: Power BI, Git/GitHub  

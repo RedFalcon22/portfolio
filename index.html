@@ -316,6 +316,56 @@
     .b-web    { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.28); }
     .b-ai     { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(12,191,191,.3); }
     .b-pfe    { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(12,191,191,.3); }
+    .b-commerce { background: rgba(232,144,10,.14); color: var(--amber); border: 1px solid rgba(232,144,10,.32); }
+    .commerce-visual {
+      width: 100%; height: 100%;
+      background:
+        linear-gradient(90deg, rgba(238,233,226,.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(238,233,226,.045) 1px, transparent 1px),
+        radial-gradient(ellipse at 18% 18%, rgba(232,144,10,.2), transparent 38%),
+        radial-gradient(ellipse at 82% 72%, rgba(12,191,191,.16), transparent 42%),
+        linear-gradient(135deg, #0B101A 0%, #131A29 58%, #0A1118 100%);
+      background-size: 28px 28px, 28px 28px, auto, auto, auto;
+      position: relative; overflow: hidden;
+      display: grid; place-items: center;
+    }
+    .commerce-window {
+      width: 74%; max-width: 260px; aspect-ratio: 1.45;
+      border: 1px solid rgba(238,233,226,.18); border-radius: 8px;
+      background: rgba(20,24,36,.86); box-shadow: 0 24px 60px rgba(0,0,0,.32);
+      padding: 12px; position: relative;
+    }
+    .commerce-window::before {
+      content: ''; display: block; width: 48%; height: 8px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--teal)); margin-bottom: 12px;
+    }
+    .commerce-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 9px; }
+    .commerce-product, .commerce-cart {
+      min-height: 82px; border: 1px solid rgba(238,233,226,.1); border-radius: 6px;
+      background: rgba(238,233,226,.06); position: relative; overflow: hidden;
+    }
+    .commerce-product::before {
+      content: ''; position: absolute; inset: 11px 12px auto 12px; height: 34px;
+      border-radius: 5px; background: linear-gradient(135deg, rgba(232,144,10,.55), rgba(12,191,191,.28));
+    }
+    .commerce-product::after {
+      content: ''; position: absolute; left: 12px; right: 34px; bottom: 15px; height: 6px;
+      border-radius: 3px; background: rgba(238,233,226,.25);
+      box-shadow: 0 11px 0 rgba(238,233,226,.12);
+    }
+    .commerce-cart::before {
+      content: ''; position: absolute; left: 13px; top: 14px; width: 42px; height: 8px;
+      border-radius: 4px; background: var(--teal);
+      box-shadow: 0 20px 0 rgba(238,233,226,.22), 0 40px 0 rgba(232,144,10,.72);
+    }
+    .commerce-orbit {
+      position: absolute; right: 10%; top: 12%; width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(232,144,10,.5);
+    }
+    .commerce-orbit::after {
+      content: ''; position: absolute; right: -3px; top: 13px; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--amber); box-shadow: 0 0 18px var(--amber-glow);
+    }
     .port-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
     .port-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
     .port-card-title { font-size: 17px; font-weight: 700; color: var(--text); }
@@ -884,6 +934,33 @@
         </div>
       </div>
 
+      <!-- Circuit & Cloth Commerce -->
+      <div class="port-card rv d4" data-cat="web">
+        <div class="port-img">
+          <div class="commerce-visual">
+            <div class="commerce-orbit"></div>
+            <div class="commerce-window">
+              <div class="commerce-grid">
+                <div class="commerce-product"></div>
+                <div class="commerce-cart"></div>
+              </div>
+            </div>
+          </div>
+          <span class="port-badge b-commerce">E-commerce</span>
+        </div>
+        <div class="port-body">
+          <div class="port-meta">
+            <span class="port-card-title">Circuit &amp; Cloth Commerce</span>
+            <span class="port-year">2026</span>
+          </div>
+          <p class="port-desc">Full-stack storefront with product listings, cart management, checkout validation, and Stripe-ready payments.</p>
+          <div class="pills"><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span></div>
+          <div class="port-actions">
+            <button class="btn-det" data-p="commerce">Details â†’</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Enterprise Manager -->
       <div class="port-card rv d4" data-cat="web">
         <div class="port-img">
@@ -1347,6 +1424,25 @@ const PROJECTS = {
     ],
     heroType: 'image'
   },
+  commerce: {
+    title: 'Circuit & Cloth Commerce',
+    badge: 'E-commerce',
+    badgeClass: 'b-commerce',
+    year: '2026',
+    subtitle: 'Full-stack React and Node.js e-commerce platform',
+    description: 'A production-style e-commerce storefront built for a client brief from TechStartup Co. The platform combines a polished React catalog experience with a Node.js API, cart management, server-side checkout validation, inventory checks, calculated totals, and a payment flow that works in demo mode while remaining ready for Stripe Checkout keys.',
+    features: [
+      'Responsive React storefront with product listings, category filters, and search',
+      'Cart drawer with quantity controls, item removal, and inventory caps',
+      'Checkout form with server-side validation using Zod',
+      'Order totals with shipping rules and estimated tax calculation',
+      'Demo payment confirmation for local testing',
+      'Stripe Checkout integration path for real payments'
+    ],
+    tech: ['React', 'Node.js', 'Express', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Zod', 'Vite'],
+    images: [],
+    heroType: 'commerce'
+  },
   enterprise: {
     title: 'Enterprise Manager',
     badge: 'Web',
@@ -1633,6 +1729,16 @@ function openDetails(projectId) {
         <path d="M36 14L16 23V38C16 50.4 25 61.8 36 66C47 61.8 56 50.4 56 38V23L36 14Z" fill="rgba(12,191,191,0.08)" stroke="rgba(12,191,191,0.5)" stroke-width="1"/>
         <path d="M26 38L32 44L46 30" stroke="#0CBFBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+    </div>`;
+  } else if (p.heroType === 'commerce') {
+    wrap.innerHTML = `<div class="det-visual commerce-visual">
+      <div class="commerce-orbit"></div>
+      <div class="commerce-window">
+        <div class="commerce-grid">
+          <div class="commerce-product"></div>
+          <div class="commerce-cart"></div>
+        </div>
+      </div>
     </div>`;
   } else if (p.images.length) {
     wrap.innerHTML = `<img class="det-hero-img" src="${p.images[0]}" alt="${p.title}">`;
