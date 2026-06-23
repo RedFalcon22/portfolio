@@ -937,15 +937,7 @@
       <!-- Circuit & Cloth Commerce -->
       <div class="port-card rv d4" data-cat="web">
         <div class="port-img">
-          <div class="commerce-visual">
-            <div class="commerce-orbit"></div>
-            <div class="commerce-window">
-              <div class="commerce-grid">
-                <div class="commerce-product"></div>
-                <div class="commerce-cart"></div>
-              </div>
-            </div>
-          </div>
+          <img src="pictures/ecommerce/main.png" alt="Circuit & Cloth Commerce storefront">
           <span class="port-badge b-commerce">E-commerce</span>
         </div>
         <div class="port-body">
@@ -956,6 +948,7 @@
           <p class="port-desc">Full-stack storefront with product listings, cart management, checkout validation, and Stripe-ready payments.</p>
           <div class="pills"><span class="pill">React</span><span class="pill">Node.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span></div>
           <div class="port-actions">
+            <button class="btn-gal" data-p="commerce">Gallery</button>
             <button class="btn-det" data-p="commerce">Details  →</button>
           </div>
         </div>
@@ -1440,8 +1433,11 @@ const PROJECTS = {
       'Stripe Checkout integration path for real payments'
     ],
     tech: ['React', 'Node.js', 'Express', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Zod', 'Vite'],
-    images: [],
-    heroType: 'commerce'
+    images: [
+      'pictures/ecommerce/main.png',
+      'pictures/ecommerce/second.png'
+    ],
+    heroType: 'image'
   },
   enterprise: {
     title: 'Enterprise Manager',
@@ -1661,8 +1657,21 @@ function openGallery(projectId) {
 
 function renderGalImage() {
   const {images, idx} = galState;
-  document.getElementById('galImg').src = images[idx];
+  const img = document.getElementById('galImg');
+  img.src = '';
+  img.alt = galState.project ? galState.project.title + ' screenshot ' + (idx + 1) : 'Project screenshot';
+  img.src = images[idx];
   document.getElementById('galCount').textContent = `${idx+1} / ${images.length}`;
+  document.querySelectorAll('.gal-thumb').forEach((thumb, i) => {
+    thumb.classList.toggle('on', i === idx);
+  });
+}
+
+function setGalImage(index) {
+  const {images} = galState;
+  if (!images.length) return;
+  galState.idx = (index + images.length) % images.length;
+  renderGalImage();
 }
 
 function renderGalThumbs() {
@@ -1672,9 +1681,7 @@ function renderGalThumbs() {
   ).join('');
   thumbs.querySelectorAll('.gal-thumb').forEach(t => {
     t.addEventListener('click', () => {
-      galState.idx = +t.dataset.i;
-      renderGalImage();
-      thumbs.querySelectorAll('.gal-thumb').forEach(x => x.classList.toggle('on', x===t));
+      setGalImage(+t.dataset.i);
     });
   });
 }
@@ -1688,16 +1695,10 @@ function initGalleryModal() {
       document.getElementById('galOverlay').classList.remove('open');
   });
   document.getElementById('galPrev').addEventListener('click', () => {
-    const {images} = galState;
-    galState.idx = (galState.idx - 1 + images.length) % images.length;
-    renderGalImage();
-    document.querySelectorAll('.gal-thumb').forEach((t,i) => t.classList.toggle('on', i===galState.idx));
+    setGalImage(galState.idx - 1);
   });
   document.getElementById('galNext').addEventListener('click', () => {
-    const {images} = galState;
-    galState.idx = (galState.idx + 1) % images.length;
-    renderGalImage();
-    document.querySelectorAll('.gal-thumb').forEach((t,i) => t.classList.toggle('on', i===galState.idx));
+    setGalImage(galState.idx + 1);
   });
   document.querySelectorAll('.btn-gal[data-p]').forEach(btn => {
     btn.addEventListener('click', () => openGallery(btn.dataset.p));
